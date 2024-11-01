@@ -32,5 +32,5 @@ class Car(models.Model):
 class Ownership(models.Model):
     owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
-    start_date = models.DateField(null=False)
-    end_date = models.DateField(null=False)   
+    start_date = models.DateField(null=False, auto_now=True)
+    end_date = models.DateField(null=True)   
