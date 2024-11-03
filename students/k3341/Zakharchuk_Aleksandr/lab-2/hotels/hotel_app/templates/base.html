@@ -17,11 +17,55 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Hotels</span>
+        <a class="navbar-brand" href="{% url 'hotels' %}">Отели</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          {% if user.is_authenticated %}
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'reservations' %}"
+                  >Мои бронирования</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Клиенты за месяц</a>
+              </li>
+            </ul>
+          {% endif %}
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link nav-link">Выйти</button>
+              </form>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Войти</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}"
+                  >Зарегистрироваться</a
+                >
+              </li>
+            {% endif %}
+          </ul>
+        </div>
       </div>
     </nav>
-    <main style="width: 50%; margin: 0 auto;">{% block content %} {% endblock content %}</main>
+    <main style="width: 50%; margin: 0 auto">
+      {% block content %} {% endblock content %}
+    </main>
   </body>
 </html>

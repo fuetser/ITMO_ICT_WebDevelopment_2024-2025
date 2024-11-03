@@ -30,5 +30,5 @@ class Reservation(models.Model):
 
 class Review(models.Model):
     reservation = models.OneToOneField(Reservation, on_delete=models.CASCADE, related_name="review")
-    rating = models.PositiveIntegerField(choices=[(i, i) for i in range(1, 6)])
+    rating = models.PositiveIntegerField(choices=[(i, i) for i in range(1, 11)])
     comment = models.TextField()
