@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import generic
 
-from hotel_app import models
+from hotel_app import forms, models
 
 
 def register(request: http.HttpRequest) -> http.HttpResponse:
@@ -46,6 +46,20 @@ def user_reservations(request: http.HttpRequest) -> http.HttpResponse:
 def hotel_rooms(request: http.HttpRequest, hotel_id: int) -> http.HttpResponse:
     rooms = models.Room.objects.filter(hotel_id=hotel_id)
     return render(request, "rooms.html", {"rooms": rooms})
+
+
+@login_required(login_url="/login/")
+def create_reservation(request: http.HttpRequest, room_id: int) -> http.HttpResponse:
+    form = forms.CreateReservationForm(request.POST or None)
+
+    if form.is_valid():
+        reservation = form.save(commit=False)
+        reservation.user = request.user
+        reservation.room = models.Room.objects.get(id=room_id)
+        form.save()
+        return redirect(reverse("reservations"))
+
+    return render(request, "create_reservation.html", {"form": form})
 
 
 class HotelListView(generic.ListView):

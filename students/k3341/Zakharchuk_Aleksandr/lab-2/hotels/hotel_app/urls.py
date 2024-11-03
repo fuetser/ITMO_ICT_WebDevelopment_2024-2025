@@ -10,4 +10,5 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(next_page="login"), name="logout"),
     path("hotels/", views.HotelListView.as_view(), name="hotels"),
     path("hotels/<int:hotel_id>/rooms/", views.hotel_rooms, name="hotel_rooms"),
+    path("rooms/<int:room_id>/reserve/", views.create_reservation, name="create_reservation"),
 ]
