@@ -1,7 +1,9 @@
+import datetime
+
 from django import http
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_request
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -55,15 +57,16 @@ def hotel_rooms(request: http.HttpRequest, hotel_id: int) -> http.HttpResponse:
 @login_required(login_url="/login/")
 def create_reservation(request: http.HttpRequest, room_id: int) -> http.HttpResponse:
     form = forms.CreateReservationForm(request.POST or None)
+    room = models.Room.objects.get(id=room_id)
 
     if form.is_valid():
         reservation = form.save(commit=False)
         reservation.user = request.user
-        reservation.room = models.Room.objects.get(id=room_id)
+        reservation.room = room
         form.save()
         return redirect(reverse("reservations"))
 
-    return render(request, "create_reservation.html", {"form": form})
+    return render(request, "create_reservation.html", {"form": form, "room": room})
 
 
 @login_required(login_url="/login/")
@@ -94,6 +97,13 @@ def room_reviews(request: http.HttpRequest, room_id: int) -> http.HttpResponse:
         print(err)
 
     return render( request, "room_reviews.html", {"room": room, "reviews": all_reviews})
+
+
+@user_passes_test(lambda user: user.is_staff, login_url="/login/")
+def month_clients(request: http.HttpRequest) -> http.HttpResponse:
+    last_month = datetime.datetime.now() - datetime.timedelta(days=30)
+    reservations = models.Reservation.objects.order_by("start_date").filter(start_date__gt=last_month)
+    return render(request, "month_clients.html", {"reservations": reservations})
 
 
 class HotelListView(generic.ListView):

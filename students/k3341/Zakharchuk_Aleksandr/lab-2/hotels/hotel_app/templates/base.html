@@ -39,9 +39,11 @@
                   >Мои бронирования</a
                 >
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Клиенты за месяц</a>
-              </li>
+              {% if user.is_staff %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'month_clients' %}">Клиенты за месяц</a>
+                </li>
+              {% endif %}
             </ul>
           {% endif %}
           <ul class="navbar-nav">
