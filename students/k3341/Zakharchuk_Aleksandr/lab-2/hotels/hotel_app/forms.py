@@ -39,3 +39,20 @@ class UpdateReservationForm(forms.ModelForm):
         widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         input_formats=["%Y-%m-%d"]
     )
+
+
+class CreateReviewForm(forms.ModelForm):
+    class Meta:
+        model = models.Review
+        fields = ["rating", "comment"]
+
+    comment = forms.CharField(
+        label="Напишите ваш отзыв",
+        required=True,
+        widget=forms.Textarea(attrs={"cols": 100, "rows": 5})
+    )
+    rating = forms.ChoiceField(
+        label="Оцените номер",
+        required=True,
+        choices=[(i, i) for i in range(10, 0, -1)],
+    )

@@ -12,7 +12,7 @@
       <p class="card-text mb-2">Удобства: {{ room.room_type.amenities }}</p>
       <p class="card-text mb-3">Цена: {{ room.price }} рублей</p>
       <a href="{% url 'create_reservation' room_id=room.id %}" class="btn btn-primary me-2">Забронировать</a>
-      <a href="#" class="btn btn-secondary">Отзывы</a>
+      <a href="{% url 'room_reviews' room_id=room.id %}" class="btn btn-secondary">Отзывы</a>
     </div>
   </div>
   {% endfor %}

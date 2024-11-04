@@ -13,7 +13,10 @@
         Окончание бронирования: {{ reservation.end_date|date:"d.m.Y" }}
       </p>
       <div>
-        <a href="#" class="btn btn-primary pt-1 me-2">
+        <a
+          href="{% url 'create_review' reservation_id=reservation.id %}"
+          class="btn btn-primary pt-1 me-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -27,7 +30,10 @@
             />
           </svg>
         </a>
-        <a href="{% url 'update_reservation' pk=reservation.id %}" class="btn btn-secondary pt-1 me-2">
+        <a
+          href="{% url 'update_reservation' pk=reservation.id %}"
+          class="btn btn-secondary pt-1 me-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -41,7 +47,10 @@
             ></path>
           </svg>
         </a>
-        <a href="{% url 'delete_reservation' pk=reservation.id %}" class="btn btn-danger pt-1">
+        <a
+          href="{% url 'delete_reservation' pk=reservation.id %}"
+          class="btn btn-danger pt-1"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

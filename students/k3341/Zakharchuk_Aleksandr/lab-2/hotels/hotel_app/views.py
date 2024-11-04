@@ -10,6 +10,10 @@ from django.views import generic
 from hotel_app import forms, models
 
 
+def root(request: http.HttpRequest) -> http.HttpResponse:
+    return redirect(reverse("hotels"))
+
+
 def register(request: http.HttpRequest) -> http.HttpResponse:
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -60,6 +64,36 @@ def create_reservation(request: http.HttpRequest, room_id: int) -> http.HttpResp
         return redirect(reverse("reservations"))
 
     return render(request, "create_reservation.html", {"form": form})
+
+
+@login_required(login_url="/login/")
+def create_review(request: http.HttpRequest, reservation_id: int) -> http.HttpResponse:
+    reservation = models.Reservation.objects.get(id=reservation_id)
+    form = forms.CreateReviewForm(request.POST or None)
+
+    if form.is_valid():
+        review = form.save(commit=False)
+        review.reservation = reservation
+        form.save()
+        return redirect(f"/rooms/{reservation.room.id}/reviews/")
+
+    return render(request, "create_review.html", {"form": form, "reservation": reservation})
+
+
+def room_reviews(request: http.HttpRequest, room_id: int) -> http.HttpResponse:
+    room = models.Room.objects.get(id=room_id)
+    all_reviews = []
+
+    try:
+        reservations = models.Reservation.objects.filter(room=room)
+        for reservation in reservations:
+            reviews = models.Review.objects.filter(reservation=reservation)
+            all_reviews.extend(reviews)
+
+    except models.Reservation.DoesNotExist as err:
+        print(err)
+
+    return render( request, "room_reviews.html", {"room": room, "reviews": all_reviews})
 
 
 class HotelListView(generic.ListView):
