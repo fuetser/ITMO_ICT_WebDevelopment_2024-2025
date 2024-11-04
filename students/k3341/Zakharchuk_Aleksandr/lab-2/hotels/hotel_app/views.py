@@ -66,3 +66,16 @@ class HotelListView(generic.ListView):
     model = models.Hotel
     context_object_name = "hotels"
     template_name = "hotels.html"
+
+
+class UpdateReservationView(generic.UpdateView):
+    model = models.Reservation
+    form_class = forms.UpdateReservationForm
+    success_url = "/reservations/"
+    template_name = "update_reservation.html"
+
+
+class DeleteReservationView(generic.DeleteView):
+    model = models.Reservation
+    success_url = "/reservations/"
+    template_name = "delete_reservation.html"
