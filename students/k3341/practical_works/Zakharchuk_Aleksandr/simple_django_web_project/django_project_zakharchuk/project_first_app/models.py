@@ -18,7 +18,7 @@ class DriverLicense(models.Model):
     owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     license_number = models.CharField(max_length=10)
     type = models.CharField(max_length=10)
-    issue_date = models.DateField()
+    issue_date = models.DateField(auto_now=True)
 
 
 class Car(models.Model):
