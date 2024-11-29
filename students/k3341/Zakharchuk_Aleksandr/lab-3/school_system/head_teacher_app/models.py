@@ -7,6 +7,9 @@ class Room(models.Model):
     room_number = models.IntegerField(primary_key=True)
     is_specialized = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"Room(room_number={self.room_number})"
+
 
 class Teacher(models.Model):
     first_name = models.CharField(max_length=50)
@@ -16,14 +19,23 @@ class Teacher(models.Model):
     assigned_room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
     is_homeroom_teacher = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"Teacher(first_name={self.first_name}, last_name={self.last_name})"
+
 
 class Subject(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return f"Subject(name={self.name})"
 
 
 class Class(models.Model):
     class_name = models.CharField(max_length=20, unique=True)
     homeroom_teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Class(class_name={self.class_name})"
 
 
 class Student(models.Model):
@@ -32,6 +44,9 @@ class Student(models.Model):
     patronymic = models.CharField(max_length=50)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     student_class = models.ForeignKey(Class, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Student(first_name={self.first_name}, last_name={self.last_name})"
 
 
 class Schedule(models.Model):
@@ -55,6 +70,9 @@ class Schedule(models.Model):
     class Meta:
         unique_together = ("student_class", "subject", "day_of_week", "lesson_number")
 
+    def __str__(self):
+        return f"Schedule(pk={self.pk})"
+
 
 class Grade(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -62,3 +80,6 @@ class Grade(models.Model):
     quarter = models.IntegerField()
     grade = models.IntegerField()
     is_final = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Grade(grade={self.grade}, pk={self.pk})"
