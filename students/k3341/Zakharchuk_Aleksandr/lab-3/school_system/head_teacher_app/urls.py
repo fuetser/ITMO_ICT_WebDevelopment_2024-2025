@@ -17,4 +17,9 @@ urlpatterns = [
     path("schedule/<int:pk>/", views.ScheduleDetailAPIView.as_view(), name="schedule-detail"),
     path("grades/", views.GradeListCreateAPIView.as_view(), name="grades-list-create"),
     path("grades/<int:pk>/", views.GradeDetailAPIView.as_view(), name="grades-detail"),
+    path("schedule/subject/", views.ScheduleByClassAPIView.as_view(), name="subject-by-class"),
+    path("subjects/teacher-count/", views.TeachersPerSubjectAPIView.as_view(), name="teachers-per-subject"),
+    path("classes/gender-count/", views.GenderCountPerClassAPIView.as_view(), name="gender-count-per-class"),
+    path("rooms/count/", views.RoomCountAPIView.as_view(), name="room-count"),
+    path("classes/performance-report/", views.ClassPerformanceReportAPIView.as_view(), name="class-performance-report"),
 ]

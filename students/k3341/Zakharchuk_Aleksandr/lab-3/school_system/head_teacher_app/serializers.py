@@ -10,7 +10,7 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 class TeacherSerializer(serializers.ModelSerializer):
-    assigned_room_id = serializers.PrimaryKeyRelatedField(queryset=models.Room.objects.all(), source="assigned_room")
+    assigned_room_id = serializers.PrimaryKeyRelatedField(queryset=models.Room.objects.all(), source="assigned_room", allow_null=True)
     assigned_room = RoomSerializer(read_only=True)
 
     class Meta:
