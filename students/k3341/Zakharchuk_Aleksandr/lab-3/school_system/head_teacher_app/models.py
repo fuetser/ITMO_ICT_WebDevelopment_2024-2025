@@ -1,6 +1,12 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 GENDER_CHOICES = [("M", "Male"), ("F", "Female")]
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    is_approved = models.BooleanField(default=False, help_text="Set to true to approve the user.")
 
 
 class Room(models.Model):
