@@ -1,4 +1,5 @@
 from django.urls import path
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 from head_teacher_app import views
 
@@ -22,4 +23,6 @@ urlpatterns = [
     path("classes/gender-count/", views.GenderCountPerClassAPIView.as_view(), name="gender-count-per-class"),
     path("rooms/count/", views.RoomCountAPIView.as_view(), name="room-count"),
     path("classes/performance-report/", views.ClassPerformanceReportAPIView.as_view(), name="class-performance-report"),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"), 
 ]

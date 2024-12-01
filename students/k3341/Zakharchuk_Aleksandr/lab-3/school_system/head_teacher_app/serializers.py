@@ -66,3 +66,7 @@ class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Grade
         fields = "__all__"
+
+
+class ErrorSerializer(serializers.Serializer):
+    detail = serializers.CharField()

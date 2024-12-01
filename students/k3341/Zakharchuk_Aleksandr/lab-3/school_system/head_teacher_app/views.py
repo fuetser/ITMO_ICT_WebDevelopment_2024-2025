@@ -1,4 +1,5 @@
 from django.db.models import Avg, Count
+from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter, OpenApiTypes, OpenApiResponse, OpenApiExample
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
@@ -119,6 +120,41 @@ class GradeDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.GradeSerializer
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Get Schedule for a Class",
+        description=(
+            "Retrieve the schedule for a specified class based on the class ID, "
+            "day of the week, and lesson number. "
+            "Provide query parameters `class_id`, `day_of_week`, and `lesson_number`."
+        ),
+        parameters=[
+            OpenApiParameter(
+                name="class_id",
+                description="The ID of the class.",
+                required=True,
+                type=OpenApiTypes.INT,
+            ),
+            OpenApiParameter(
+                name="day_of_week",
+                description="The day of the week (e.g., Monday, Tuesday).",
+                required=True,
+                type=OpenApiTypes.STR,
+            ),
+            OpenApiParameter(
+                name="lesson_number",
+                description="The lesson number for which the schedule is being retrieved.",
+                required=True,
+                type=OpenApiTypes.INT,
+            ),
+        ],
+        responses={
+            200: serializers.ScheduleSerializer(many=True),
+            400: serializers.ErrorSerializer,
+            404: serializers.ErrorSerializer,
+        },
+    )
+)
 class ScheduleByClassAPIView(APIView):
     """
     Handles GET for a single schedule record
@@ -131,7 +167,7 @@ class ScheduleByClassAPIView(APIView):
 
         if not class_id or not day_of_week or not lesson_number:
             return Response(
-                {"error": "The class_id, day_of_week and lesson_number parameters are required."},
+                {"detail": "The class_id, day_of_week and lesson_number parameters are required."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -143,7 +179,7 @@ class ScheduleByClassAPIView(APIView):
 
         if not schedule_record:
             return Response(
-                {"message": "No schedule record found for given parameters"},
+                {"detail": "No schedule record found for given parameters"},
                 status=status.HTTP_404_NOT_FOUND
             )
 
@@ -151,6 +187,38 @@ class ScheduleByClassAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@extend_schema(
+    summary="Get Number of Teachers per Subject",
+    description="Retrieve the count of teachers teaching each subject in the school.",
+    responses={
+        200: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="Successful response with the number of teachers per subject.",
+            examples=[
+                OpenApiExample(
+                    "Successful Response",
+                    value={
+                        "Mathematics": 5,
+                        "English": 3,
+                        "Physics": 2,
+                    },
+                    status_codes=["200"],
+                )
+            ],
+        ),
+        404: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="No subjects or teachers found in the system.",
+            examples=[
+                OpenApiExample(
+                    "No Subjects or Teachers",
+                    value={"detail": "No subjects or teachers found."},
+                    status_codes=["404"],
+                )
+            ],
+        ),
+    },
+)
 class TeachersPerSubjectAPIView(APIView):
     """
     Handles GET info about teachers for each subject
@@ -175,6 +243,37 @@ class TeachersPerSubjectAPIView(APIView):
         return Response(result, status=status.HTTP_200_OK)
 
 
+@extend_schema(
+    summary="Get Gender Count Per Class",
+    description="Retrieve the count of male and female students in each class.",
+    responses={
+        200: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="Successful response with the count of male and female students per class.",
+            examples=[
+                OpenApiExample(
+                    "Successful Response",
+                    value={
+                        "Class 1A": {"male": 10, "female": 15},
+                        "Class 2B": {"male": 8, "female": 12},
+                    },
+                    status_codes=["200"],
+                )
+            ],
+        ),
+        404: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="No classes or students found in the system.",
+            examples=[
+                OpenApiExample(
+                    "No Classes or Students",
+                    value={"detail": "No classes or students found."},
+                    status_codes=["404"],
+                )
+            ],
+        ),
+    },
+)
 class GenderCountPerClassAPIView(APIView):
     """
     Handles GET the number of boys and girls in each class
@@ -216,6 +315,26 @@ class GenderCountPerClassAPIView(APIView):
         return Response(formatted_result, status=status.HTTP_200_OK)
 
 
+@extend_schema(
+    summary="Get Room Count by Type",
+    description="Retrieve the count of rooms for basic and specialized disciplines.",
+    responses={
+        200: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="Successful response with the count of basic and specialized rooms.",
+            examples=[
+                OpenApiExample(
+                    "Successful Response",
+                    value={
+                        "basic_rooms": 25,
+                        "specialized_rooms": 10,
+                    },
+                    status_codes=["200"],
+                )
+            ],
+        ),
+    },
+)
 class RoomCountAPIView(APIView):
     """
     Handles GET the number of basic and specialized rooms
@@ -241,6 +360,73 @@ class RoomCountAPIView(APIView):
         return Response(result, status=status.HTTP_200_OK)
 
 
+@extend_schema(
+    summary="Get Class Performance Report",
+    description=(
+        "Retrieve a performance report for a specified class. "
+        "The report includes average grades for each subject, the overall class average, "
+        "the total number of students, and the homeroom teacher."
+    ),
+    parameters=[
+        OpenApiParameter(
+            name="class_id",
+            description="The ID of the class for which to generate the performance report.",
+            required=True,
+            type=OpenApiTypes.INT,
+        ),
+        OpenApiParameter(
+            name="quarter_number",
+            description="The quarter for which to calculate the grades.",
+            required=True,
+            type=OpenApiTypes.INT,
+        ),
+    ],
+    responses={
+        200: OpenApiResponse(
+            response=serializers.ErrorSerializer,
+            description="Performance report for the specified class.",
+            examples=[
+                OpenApiExample(
+                    "Successful Response",
+                    value={
+                        "class_name": "Class 1A",
+                        "homeroom_teacher": "John Doe",
+                        "total_students": 30,
+                        "subjects": {
+                            "Mathematics": {"average_grade": 4.5},
+                            "English": {"average_grade": 4.2},
+                            "Physics": {"average_grade": 3.8},
+                        },
+                        "overall_average_grade": 4.2,
+                    },
+                    status_codes=["200"],
+                )
+            ],
+        ),
+        400: OpenApiResponse(
+            response=serializers.ErrorSerializer,
+            description="Bad request due to invalid or missing parameters.",
+            examples=[
+                OpenApiExample(
+                    "Missing class_id",
+                    value={"error": "class_id is a required parameter."},
+                    status_codes=["400"],
+                )
+            ],
+        ),
+        404: OpenApiResponse(
+            response=OpenApiTypes.OBJECT,
+            description="Class or related data not found.",
+            examples=[
+                OpenApiExample(
+                    "Class Not Found",
+                    value={"error": "The specified class does not exist."},
+                    status_codes=["404"],
+                )
+            ],
+        ),
+    },
+)
 class ClassPerformanceReportAPIView(APIView):
     """
     Handles GET info about class performance
@@ -251,14 +437,14 @@ class ClassPerformanceReportAPIView(APIView):
         quarter_number = request.query_params.get("quarter_number")
         if not class_id or not quarter_number:
             return Response(
-                {"error": "The class_id and quarter_number parameters are required."},
+                {"detail": "The class_id and quarter_number parameters are required."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         class_obj = models.Class.objects.filter(id=class_id).first()
         if not class_obj:
             return Response(
-                {"error": f"Class with id {class_id} not found."},
+                {"detail": f"Class with id {class_id} not found."},
                 status=status.HTTP_404_NOT_FOUND
             )
 
