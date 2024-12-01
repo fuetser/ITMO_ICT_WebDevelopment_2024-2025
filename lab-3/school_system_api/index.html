@@ -1,0 +1,1550 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../lab-2/hotels/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>School system - Web Labs Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Web Labs Documentation" class="md-header__button md-logo" aria-label="Web Labs Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web Labs Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              School system
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web Labs Documentation" class="md-nav__button md-logo" aria-label="Web Labs Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Web Labs Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-1/task1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-1/task2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-1/task3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-1/task4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-1/task5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-2/hotels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hotels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    School system
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    School system
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Описание сервиса
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Эндпоинты
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Эндпоинты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-room-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Room API (Аудитории)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Room API (Аудитории)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-teacher-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Teacher API (Учителя)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Teacher API (Учителя)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-subject-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Subject API (Предметы)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Subject API (Предметы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Class API (Классы)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Class API (Классы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-student-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Student API (Ученики)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Student API (Ученики)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-schedule-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Schedule API (Расписание)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Schedule API (Расписание)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-grades-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Grades API (Оценки)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Grades API (Оценки)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-schedule-by-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Schedule by Class API (Расписание по классу)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Schedule by Class API (Расписание по классу)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-teachers-per-subject-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Teachers Per Subject API (Количество учителей на предмет)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Teachers Per Subject API (Количество учителей на предмет)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-gender-count-per-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Gender Count Per Class API (Количество учеников каждого пола в классе)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Gender Count Per Class API (Количество учеников каждого пола в классе)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-room-count-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Room Count API (Общее количество аудиторий)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Room Count API (Общее количество аудиторий)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-class-performance-report-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Class Performance Report API (Отчет по успеваемости классов)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Class Performance Report API (Отчет по успеваемости классов)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-api-documentation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. API Documentation &amp; Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Описание сервиса
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Эндпоинты
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Эндпоинты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-room-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Room API (Аудитории)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Room API (Аудитории)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-teacher-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Teacher API (Учителя)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Teacher API (Учителя)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-subject-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Subject API (Предметы)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Subject API (Предметы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Class API (Классы)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Class API (Классы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-student-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Student API (Ученики)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Student API (Ученики)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-schedule-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Schedule API (Расписание)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Schedule API (Расписание)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-grades-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Grades API (Оценки)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Grades API (Оценки)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-schedule-by-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Schedule by Class API (Расписание по классу)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Schedule by Class API (Расписание по классу)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-teachers-per-subject-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Teachers Per Subject API (Количество учителей на предмет)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Teachers Per Subject API (Количество учителей на предмет)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-gender-count-per-class-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Gender Count Per Class API (Количество учеников каждого пола в классе)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Gender Count Per Class API (Количество учеников каждого пола в классе)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-room-count-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Room Count API (Общее количество аудиторий)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Room Count API (Общее количество аудиторий)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-class-performance-report-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Class Performance Report API (Отчет по успеваемости классов)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Class Performance Report API (Отчет по успеваемости классов)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Методы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример ответа:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-api-documentation-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. API Documentation &amp; Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>School system</h1>
+
+<h3 id="_1">Описание сервиса</h3>
+<p>Сервис <strong>Head Teacher App</strong> представляет собой систему управления учебным процессом для школ. Он позволяет администраторам, учителям и другим пользователям управлять расписанием занятий, вести учет учеников, преподавателей и аудиторий, а также отслеживать успеваемость. С помощью API можно автоматизировать ключевые процессы, включая:</p>
+<ul>
+<li>Управление данными о классах, учениках, учителях, предметах и аудиториях.</li>
+<li>Построение расписания занятий с учетом привязки к классам, предметам, преподавателям и аудиториям.</li>
+<li>Отчеты о статистике, такие как количество учеников по полу, число учителей на предмет, а также средняя успеваемость по классам.</li>
+<li>Интеграция с внешними системами для расширения функциональности и улучшения контроля образовательного процесса.</li>
+</ul>
+<p>Сервис обеспечивает прозрачное взаимодействие между различными компонентами учебного процесса, предоставляя удобный доступ через RESTful API.</p>
+<h3 id="_2">Эндпоинты</h3>
+<h4 id="1-room-api">1. <strong>Room API (Аудитории)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/rooms/</code></p>
+<h5 id="_3">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/rooms/</code> - Получение списка аудиторий.  </li>
+<li><strong>POST</strong> <code>/rooms/</code> - Создание новой аудитории.  </li>
+<li><strong>GET</strong> <code>/rooms/{id}/</code> - Получение информации о конкретной аудитории.  </li>
+<li><strong>PUT</strong> <code>/rooms/{id}/</code> - Полное обновление информации об аудитории.  </li>
+<li><strong>PATCH</strong> <code>/rooms/{id}/</code> - Частичное обновление информации об аудитории.  </li>
+<li><strong>DELETE</strong> <code>/rooms/{id}/</code> - Удаление аудитории.  </li>
+</ul>
+<hr />
+<h4 id="2-teacher-api">2. <strong>Teacher API (Учителя)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/teachers/</code></p>
+<h5 id="_4">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/teachers/</code> - Получение списка учителей.  </li>
+<li><strong>POST</strong> <code>/teachers/</code> - Создание нового учителя.  </li>
+<li><strong>GET</strong> <code>/teachers/{id}/</code> - Получение информации о конкретном учителе.  </li>
+<li><strong>PUT</strong> <code>/teachers/{id}/</code> - Полное обновление информации об учителе.  </li>
+<li><strong>PATCH</strong> <code>/teachers/{id}/</code> - Частичное обновление информации об учителе.  </li>
+<li><strong>DELETE</strong> <code>/teachers/{id}/</code> - Удаление учителя.  </li>
+</ul>
+<hr />
+<h4 id="3-subject-api">3. <strong>Subject API (Предметы)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/subjects/</code></p>
+<h5 id="_5">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/subjects/</code> - Получение списка предметов.  </li>
+<li><strong>POST</strong> <code>/subjects/</code> - Создание нового предмета.  </li>
+<li><strong>GET</strong> <code>/subjects/{id}/</code> - Получение информации о конкретном предмете.  </li>
+<li><strong>PUT</strong> <code>/subjects/{id}/</code> - Полное обновление информации о предмете.  </li>
+<li><strong>PATCH</strong> <code>/subjects/{id}/</code> - Частичное обновление информации о предмете.  </li>
+<li><strong>DELETE</strong> <code>/subjects/{id}/</code> - Удаление предмета.  </li>
+</ul>
+<hr />
+<h4 id="4-class-api">4. <strong>Class API (Классы)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/classes/</code></p>
+<h5 id="_6">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/classes/</code> - Получение списка классов.  </li>
+<li><strong>POST</strong> <code>/classes/</code> - Создание нового класса.  </li>
+<li><strong>GET</strong> <code>/classes/{id}/</code> - Получение информации о конкретном классе.  </li>
+<li><strong>PUT</strong> <code>/classes/{id}/</code> - Полное обновление информации о классе.  </li>
+<li><strong>PATCH</strong> <code>/classes/{id}/</code> - Частичное обновление информации о классе.  </li>
+<li><strong>DELETE</strong> <code>/classes/{id}/</code> - Удаление класса.  </li>
+</ul>
+<hr />
+<h4 id="5-student-api">5. <strong>Student API (Ученики)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/students/</code></p>
+<h5 id="_7">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/students/</code> - Получение списка учеников.  </li>
+<li><strong>POST</strong> <code>/students/</code> - Создание нового ученика.  </li>
+<li><strong>GET</strong> <code>/students/{id}/</code> - Получение информации о конкретном ученике.  </li>
+<li><strong>PUT</strong> <code>/students/{id}/</code> - Полное обновление информации об ученике.  </li>
+<li><strong>PATCH</strong> <code>/students/{id}/</code> - Частичное обновление информации об ученике.  </li>
+<li><strong>DELETE</strong> <code>/students/{id}/</code> - Удаление ученика.  </li>
+</ul>
+<hr />
+<h4 id="6-schedule-api">6. <strong>Schedule API (Расписание)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/schedule/</code></p>
+<h5 id="_8">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/schedule/</code> - Получение списка записей расписания.  </li>
+<li><strong>POST</strong> <code>/schedule/</code> - Создание новой записи расписания.  </li>
+<li><strong>GET</strong> <code>/schedule/{id}/</code> - Получение информации о конкретной записи расписания.  </li>
+<li><strong>PUT</strong> <code>/schedule/{id}/</code> - Полное обновление информации о записи расписания.  </li>
+<li><strong>PATCH</strong> <code>/schedule/{id}/</code> - Частичное обновление информации о записи расписания.  </li>
+<li><strong>DELETE</strong> <code>/schedule/{id}/</code> - Удаление записи расписания.  </li>
+</ul>
+<hr />
+<h4 id="7-grades-api">7. <strong>Grades API (Оценки)</strong></h4>
+<p><strong>Базовый URL:</strong> <code>/grades/</code></p>
+<h5 id="_9">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/grades/</code> - Получение списка оценок.  </li>
+<li><strong>POST</strong> <code>/grades/</code> - Создание новой оценки.  </li>
+<li><strong>GET</strong> <code>/grades/{id}/</code> - Получение информации о конкретной оценке.  </li>
+<li><strong>PUT</strong> <code>/grades/{id}/</code> - Полное обновление информации об оценке.  </li>
+<li><strong>PATCH</strong> <code>/grades/{id}/</code> - Частичное обновление информации об оценке.  </li>
+<li><strong>DELETE</strong> <code>/grades/{id}/</code> - Удаление оценки.  </li>
+</ul>
+<hr />
+<h4 id="8-schedule-by-class-api">8. <strong>Schedule by Class API (Расписание по классу)</strong></h4>
+<p><strong>URL:</strong> <code>/schedule/subject/</code></p>
+<h5 id="_10">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/schedule/subject/</code><br />
+<strong>Описание:</strong> Получение расписания для указанного класса на определенный день недели и номер урока.<br />
+<strong>Параметры:</strong></li>
+<li><code>class_id</code> (int) - ID класса.  </li>
+<li><code>day_of_week</code> (str) - День недели (например, "Monday").  </li>
+<li><code>lesson_number</code> (int) - Номер урока.  </li>
+</ul>
+<h5 id="_11">Пример ответа:</h5>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;student_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Class 1A&quot;</span><span class="p">},</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mathematics&quot;</span><span class="p">},</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;teacher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">},</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;room_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;room_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;101&quot;</span><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h4 id="9-teachers-per-subject-api">9. <strong>Teachers Per Subject API (Количество учителей на предмет)</strong></h4>
+<p><strong>URL:</strong> <code>/subjects/teacher-count/</code></p>
+<h5 id="_12">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/subjects/teacher-count/</code><br />
+<strong>Описание:</strong> Получение количества учителей, преподающих каждый предмет.  </li>
+</ul>
+<h5 id="_13">Пример ответа:</h5>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mathematics&quot;</span><span class="p">},</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&quot;teacher_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Physics&quot;</span><span class="p">},</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">&quot;teacher_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;History&quot;</span><span class="p">},</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">&quot;teacher_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h4 id="10-gender-count-per-class-api">10. <strong>Gender Count Per Class API (Количество учеников каждого пола в классе)</strong></h4>
+<p><strong>URL:</strong> <code>/classes/gender-count/</code></p>
+<h5 id="_14">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/classes/gender-count/</code><br />
+<strong>Описание:</strong> Получение количества мальчиков и девочек в каждом классе.  </li>
+</ul>
+<h5 id="_15">Пример ответа:</h5>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">[</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Class 1A&quot;</span><span class="p">},</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">&quot;male_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">&quot;female_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Class 2B&quot;</span><span class="p">},</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">&quot;male_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">&quot;female_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h4 id="11-room-count-api">11. <strong>Room Count API (Общее количество аудиторий)</strong></h4>
+<p><strong>URL:</strong> <code>/rooms/count/</code></p>
+<h5 id="_16">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/rooms/count/</code><br />
+<strong>Описание:</strong> Получение общего количества аудиторий.  </li>
+</ul>
+<h5 id="_17">Пример ответа:</h5>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;basic_rooms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;specialized_rooms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h4 id="12-class-performance-report-api">12. <strong>Class Performance Report API (Отчет по успеваемости классов)</strong></h4>
+<p><strong>URL:</strong> <code>/classes/performance-report/</code></p>
+<h5 id="_18">Методы</h5>
+<ul>
+<li><strong>GET</strong> <code>/classes/performance-report/</code><br />
+<strong>Описание:</strong> Получение отчета по успеваемости каждого класса, включая средние оценки.  </li>
+</ul>
+<h5 id="_19">Пример ответа:</h5>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">[</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Class 1A&quot;</span><span class="p">},</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">&quot;average_grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">&quot;student_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Class 2B&quot;</span><span class="p">},</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">&quot;average_grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">&quot;student_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h4 id="13-api-documentation-schema">13. <strong>API Documentation &amp; Schema</strong></h4>
+<ul>
+<li>
+<p><strong>GET</strong> <code>/api/schema/</code><br />
+<strong>Описание:</strong> Получение схемы API в формате OpenAPI.  </p>
+</li>
+<li>
+<p><strong>GET</strong> <code>/api/docs/</code><br />
+<strong>Описание:</strong> Просмотр документации API в формате Swagger.  </p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
