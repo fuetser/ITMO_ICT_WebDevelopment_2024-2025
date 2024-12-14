@@ -9,6 +9,8 @@ nav:
       - "Task 5": lab-1/task5.md
   - Lab 2:
       - "Hotels": lab-2/hotels.md
+  - Lab 3:
+      - "School system": lab-3/school_system_api.md
 
 theme:
   name: material
