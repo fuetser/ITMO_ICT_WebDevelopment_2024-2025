@@ -24,19 +24,21 @@ class SubjectSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class StudentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Student
-        fields = "__all__"
-
-
 class ClassSerializer(serializers.ModelSerializer):
     homeroom_teacher_id = serializers.PrimaryKeyRelatedField(queryset=models.Teacher.objects.all(), source="homeroom_teacher")
     homeroom_teacher = TeacherSerializer(read_only=True)
-    students = StudentSerializer(many=True, read_only=True, source="student_set")
 
     class Meta:
         model = models.Class
+        fields = "__all__"
+
+
+class StudentSerializer(serializers.ModelSerializer):
+    student_class_id = serializers.PrimaryKeyRelatedField(queryset=models.Class.objects.all(), source="student_class")
+    student_class = ClassSerializer(read_only=True)
+
+    class Meta:
+        model = models.Student
         fields = "__all__"
 
 

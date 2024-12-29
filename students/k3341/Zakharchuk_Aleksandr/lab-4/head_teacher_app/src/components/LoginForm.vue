@@ -82,7 +82,7 @@ const submitForm = async () => {
         if (response.status === 200) {
           const token = response.data.auth_token;
           localStorage.setItem('token', token);
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          axios.defaults.headers.common['Authorization'] = `Token ${token}`;
           console.log('login successful');
         }
     }
